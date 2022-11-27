@@ -25,16 +25,17 @@ def calculate_force(body, space_objects):
 
 def move_space_object(body, dt):
     """Перемещает тело в соответствии с действующей на него силой.
-
     Параметры:
-
     **body** — тело, которое нужно переместить.
     """
 
-    ax = body.Fx/body.m
-    body.x += 42  # FIXME: не понимаю как менять...
-    body.Vx += ax*dt
-    # FIXME: not done recalculation of y coordinate!
+    ax = body.Fx / body.m
+    body.Vx += ax * dt
+    body.x += (body.Vx * dt)
+    ay = body.Fy / body.m
+    body.Vy += ay * dt
+    body.y += (body.Vy * dt)
+
 
 
 def recalculate_space_objects_positions(space_objects, dt):
